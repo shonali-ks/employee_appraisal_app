@@ -7,14 +7,14 @@ For backend (server-side) I have used # nodejs and also # express modules , mong
 # How to run 
 
 # App
-npm init
-ng serve
+- npm init
+- ng serve
 
 # nodejs
-npm init
-node index.js
-0r
-nodemon index.js
+- npm init
+- node index.js
+  0r
+- nodemon index.js
 
 # Dependencies
 1) express
