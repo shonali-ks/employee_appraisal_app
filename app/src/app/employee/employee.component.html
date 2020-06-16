@@ -1,0 +1,67 @@
+<div class="tool">
+<mat-toolbar  color="primary">
+    <span class="align">Employee records</span>
+  </mat-toolbar>
+
+  <mat-card *ngIf="show" style="top:100px" >
+    <mat-card-title>
+        Add Employee Data
+    </mat-card-title>
+    <form  #empForm="ngForm" (ngSubmit)="onSubmit(empForm)">
+        
+            
+        <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="employeeService.selectedEmployee._id" required>
+        
+           <mat-form-field >
+               <mat-label>Name</mat-label>
+               <input matInput placeholder="Name" name="name" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.name" required>
+             </mat-form-field>
+             <br>
+             <mat-form-field >
+               <mat-label>Position</mat-label>
+               <input matInput placeholder="Designation" name="position" #position="ngModel" [(ngModel)]="employeeService.selectedEmployee.position" required >
+             </mat-form-field>
+             <br>
+             <mat-form-field >
+               <mat-label>Gender</mat-label>
+               <input matInput placeholder="Gender" name="gender" #gender="ngModel" [(ngModel)]="employeeService.selectedEmployee.gender" required>
+             </mat-form-field><br>
+           
+             <mat-form-field >
+               <mat-label>Age</mat-label>
+               <input matInput placeholder="Age" name="age" #age="ngModel" [(ngModel)]="employeeService.selectedEmployee.age" required>
+             </mat-form-field><br>
+             <mat-form-field >
+                   <mat-label>Salary</mat-label>
+                   <input matInput placeholder="Salary" name="salary" #salary="ngModel" [(ngModel)]="employeeService.selectedEmployee.salary" required >
+                 </mat-form-field><br> 
+                 <button mat-button  color="warn"  (click)="close()" >
+                        Close
+                      </button>
+                <button mat-button type="submit" >Submit</button>
+
+    </form>
+    
+</mat-card>
+<table *ngIf="table">
+    <th>Name</th>
+    <th>Position</th>
+    <th>Gender</th>
+    <th>Age</th>
+    <th>Salary</th>
+    <th></th>
+
+    <tr *ngFor="let emp of employeeService.employee">
+        <td>{{emp.name}}</td>
+        <td>{{emp.position}}</td>
+        <td>{{emp.gender}}</td>
+        <td>{{emp.age}}</td>
+        <td>{{emp.salary}}</td>
+        <td><button mat-button   (click)="onEdit(emp)" ><mat-icon>edit</mat-icon></button><button mat-button   (click)="ondelete(emp._id)" ><mat-icon>delete</mat-icon></button></td>
+
+    </tr>
+</table>
+<button mat-button mat-fab color="warn" class="add" (click)="openForm()" >
+    <mat-icon style="scale: 1.5;">add</mat-icon>
+  </button>
+
